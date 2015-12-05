@@ -1,0 +1,85 @@
+header {
+	color: #007e99;
+	font-size: 1.5em;
+	padding:2px 350px;
+}
+header span {
+	color: #722;
+}
+
+nav {
+	color: #722;
+	font-size: 1.2em;
+	margin: 5px 0;
+	padding: 2px 5px
+	}
+nav li{
+	display: inline;
+	margin: 0 10px;
+	}
+* html nav li {
+	margin-left: -15px;
+}
+
+nav span, nav a{
+	padding: 3px 15px 4px;
+	}
+
+nav span{
+	background-color: #722;
+	color: #fff;
+	}
+	
+section{
+	float: left;
+	position: relative;
+	width: 70%;
+	padding: 35px 0;
+	}
+
+section article{
+	margin: 0 50px 40px;
+	padding: 0 0 0;
+	position: relative;
+	}
+
+section header{
+	/*color:#722;*/
+	font-size: 1em;
+	padding: 0;
+	}
+
+section h2{
+	font-size: 2.3em;
+	}
+
+aside{
+	float: right;
+	padding: 70px 0 30px;
+	position: relative;
+	width: 20%;
+	}
+
+aside h2{
+	color: #888;
+	font-size: 1.0em;
+	text-align: center;
+	}
+	
+aside .tag-cloud{
+	padding: 15px 35px 10px 0;
+	text-align: center;
+	}
+
+aside .tag-cloud li{
+	display: inline;
+	}
+aside .tag-cloud a{
+	font-size: 1.3em;
+	}
+	
+footer{
+	clear: both;
+	color: #777;
+	padding: 10px 50px;
+	}
