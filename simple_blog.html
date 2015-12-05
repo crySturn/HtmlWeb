@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple HTML5 Blog</title>
+<link rel="stylesheet" href="E:\HTML5\blog.css">
+<script type="text/javascript" src="http://d3js.org/d3.v3.js"></script>
+<style>
+  svg {
+    font: 10px sans-serif;
+  }
+  </style>
+</head>
+<body>
+<header>
+<h1>Simple <span>HTML5</span> Blog</h1>
+</header>
+<nav>
+	<ul>
+	<li><span>Navigation example</span></li>
+	<li><a href="saturn.com" target="_top">About</a></li>
+	<li><a href="https://www.facebook.com/rpguptanitj" target="_blank">Contact</a></li>
+	</ul>
+</nav>
+
+<section>
+	<article>
+	<p>
+	Below drawing pattern was created by <a href="https://www.facebook.com/bikesh.ch?fref=ts" target="_blank">BikeshC</a>.
+	</p>
+	</article>
+	<article>
+	<header>
+		<h2>D3 : Object Constancy</h2>
+	</header>
+	<head>
+		<body>
+			<script>
+				var margin = {top: 0, right: 4, bottom: 10, left: 40},
+				width = 900,
+				height = 450 - margin.top - margin.bottom;
+
+				var svg = d3.select("body").append("svg")
+				.attr("width", width + margin.left + margin.right)
+				.attr("height", height + margin.top + margin.bottom)
+				.style("margin-left", margin.left + "px");
+
+				var bezier = function bezier(t, p0, p1, p2) {
+					return (1-t)*((1-t)*p0 + t*p1) + t*((1-t)*p1 + t*p2);
+				}
+
+				var bezierLine = function bezierLine(t, p0, p1) {
+					return (1-t)*p0 + t*p1;
+				}
+
+				var bezierCubic = function bezierCubic(t, p0, p1, p2, p3) {
+					return (1-t)*bezier(t, p0, p1, p2) + t*bezier(t, p1, p2, p3);
+				}
+
+				var x0=200, y0=400;
+				var x1=100, y1=100;
+				var x2=500, y2=100;
+				var x3=900, y3=400;
+
+				svg.append("path")
+				.attr("d", "M 200,400 C 100,100 500,100 900,400")
+				.attr("stroke", "blue")
+				.attr("stroke-width", "2px")
+				.attr("fill", "none");
+
+				svg.append("text")
+				.attr("x", x0)
+				.attr("y", y0)
+				.attr("dx", "-20")
+				.text("A");
+
+				svg.append("text")
+				.attr("x", x1)
+				.attr("y", y1)
+				.attr("dx", "-20")
+				.text("B");
+
+				svg.append("text")
+				.attr("x", x2)
+				.attr("y", y2)
+				.attr("dx", "20")
+				.text("C");
+
+				svg.append("text")
+				.attr("x", x3)
+				.attr("y", y3)
+				.attr("dx", "20")
+				.text("D");
+
+				svg.append("circle")
+				.attr("cx", x0)
+				.attr("cy", y0)
+				.attr("r", "3px")
+				.attr("stroke", "black")
+				.attr("stroke-width", "1px")
+				.attr("fill", "black");
+
+				svg.append("circle")
+				.attr("cx", x1)
+				.attr("cy", y1)
+				.attr("r", "3px")
+				.attr("stroke", "black")
+				.attr("stroke-width", "1px")
+				.attr("fill", "black");
+
+				svg.append("circle")
+				.attr("cx", x2)
+				.attr("cy", y2)
+				.attr("r", "3px")
+				.attr("stroke", "black")
+				.attr("stroke-width", "1px")
+				.attr("fill", "black");
+
+				svg.append("circle")
+				.attr("cx", x3)
+				.attr("cy", y3)
+				.attr("r", "3px")
+				.attr("stroke", "black")
+				.attr("stroke-width", "1px")
+				  .attr("fill", "black");
+
+				svg.append("line")
+				  .attr("x1", x0)
+				  .attr("y1", y0)
+				  .attr("x2", x1)
+				  .attr("y2", y1)
+				  .attr("stroke", "red")
+				  .attr("stroke-width", "1px");
+
+				  svg.append("line")
+				  .attr("x1", x1)
+				  .attr("y1", y1)
+				  .attr("x2", x2)
+				  .attr("y2", y2)
+				  .attr("stroke", "red")
+				  .attr("stroke-width", "1px");
+
+				  svg.append("line")
+				  .attr("x1", x2)
+				  .attr("y1", y2)
+				  .attr("x2", x3)
+				  .attr("y2", y3)
+				  .attr("stroke", "red")
+				  .attr("stroke-width", "1px");
+
+				  var movingLine = svg.append("line")
+				  .attr("x1", x0)
+				  .attr("y1", y0)
+				  .attr("x2", x1)
+				  .attr("y2", y1)
+				  .attr("stroke", "green")
+				  .attr("stroke-width", "1px");
+
+				  var movingLine1 = svg.append("line")
+				  .attr("x1", x2)
+				  .attr("y1", y2)
+				  .attr("x2", x3)
+				  .attr("y2", y3)
+				  .attr("stroke", "green")
+				  .attr("stroke-width", "1px");
+
+				  var movingLine2 = svg.append("line")
+				  .attr("x1", x0)
+				  .attr("y1", y0)
+				  .attr("x2", x1)
+				  .attr("y2", y1)
+				  .attr("stroke", "black")
+				  .attr("stroke-width", "1px");
+
+				  var movingCircle = svg.append("circle")
+				  .attr("cx", x0)
+				  .attr("cy", y0)
+				  .attr("r", "3px")
+				  .attr("stroke", "black")
+				  .attr("stroke-width", "1px")
+				  .attr("fill", "black");
+
+				  var movingCircle1 = svg.append("circle")
+				  .attr("cx", x0)
+				  .attr("cy", y0)
+				  .attr("r", "3px")
+				  .attr("stroke", "black")
+				  .attr("stroke-width", "1px")
+				  .attr("fill", "none");
+
+				  var movingCircle2 = svg.append("circle")
+				  .attr("cx", x1)
+				  .attr("cy", y1)
+				  .attr("r", "3px")
+				  .attr("stroke", "black")
+				  .attr("stroke-width", "1px")
+				  .attr("fill", "none");
+
+				  var movingCircle3 = svg.append("circle")
+				  .attr("cx", x2)
+				  .attr("cy", y2)
+				  .attr("r", "3px")
+				  .attr("stroke", "black")
+				  .attr("stroke-width", "1px")
+				  .attr("fill", "none");
+
+				  var movingCircle4 = svg.append("circle")
+				  .attr("cx", x1)
+				  .attr("cy", y1)
+				  .attr("r", "3px")
+				  .attr("stroke", "black")
+				  .attr("stroke-width", "1px")
+				  .attr("fill", "black");
+
+				  var movingCircle5 = svg.append("circle")
+				  .attr("cx", x2)
+				  .attr("cy", y2)
+				  .attr("r", "3px")
+				  .attr("stroke", "blue")
+				  .attr("stroke-width", "1px")
+				  .attr("fill", "blue");
+
+				  function drawCircle(i) {
+					var x = Math.round(bezier(i, x0, x1, x2));
+					var y = Math.round(bezier(i, y0, y1, y2));
+					var xx = Math.round(bezier(i, x1, x2, x3));
+					var yy = Math.round(bezier(i, y1, y2, y3));
+
+					var lx1 = Math.round(bezierLine(i, x0, x1));
+					var lx2 = Math.round(bezierLine(i, x1, x2));
+					var lx3 = Math.round(bezierLine(i, x2, x3));
+					var ly1 = Math.round(bezierLine(i, y0, y1));
+					var ly2 = Math.round(bezierLine(i, y1, y2));
+					var ly3 = Math.round(bezierLine(i, y2, y3));
+
+					var lx11 = Math.round(bezierLine(i, lx1, lx2));
+					var lx22 = Math.round(bezierLine(i, lx2, lx3));
+					var ly11 = Math.round(bezierLine(i, ly1, ly2));
+					var ly22 = Math.round(bezierLine(i, ly2, ly3));
+
+					var xxx = Math.round(bezierCubic(i, x0, x1, x2, x3));
+					var yyy = Math.round(bezierCubic(i, y0, y1, y2, y3));
+
+					movingLine
+					.attr("x1", lx1)
+					.attr("y1", ly1)
+					.attr("x2", lx2)
+					.attr("y2", ly2)
+					.attr("stroke", "green")
+					.attr("stroke-width", "1px");
+
+					movingLine1
+					.attr("x1", lx2)
+					.attr("y1", ly2)
+					.attr("x2", lx3)
+					.attr("y2", ly3)
+					.attr("stroke", "green")
+					.attr("stroke-width", "1px");
+
+					movingLine2
+					.attr("x1", lx11)
+					.attr("y1", ly11)
+					.attr("x2", lx22)
+					.attr("y2", ly22)
+					.attr("stroke", "black")
+					.attr("stroke-width", "1px");
+
+					movingCircle
+					.attr("cx", x)
+					.attr("cy", y)
+					.attr("r", "3px")
+					.attr("stroke", "black")
+					.attr("stroke-width", "1px")
+					.attr("fill", "black");
+
+					movingCircle1
+					.attr("cx", lx1)
+					.attr("cy", ly1)
+					.attr("r", "3px")
+					.attr("stroke", "black")
+					.attr("stroke-width", "1px")
+					.attr("fill", "none");
+
+					movingCircle2
+					.attr("cx", lx2)
+					.attr("cy", ly2)
+					.attr("r", "3px")
+					.attr("stroke", "black")
+					.attr("stroke-width", "1px")
+					.attr("fill", "none");
+
+					movingCircle3
+					.attr("cx", lx3)
+					.attr("cy", ly3)
+					.attr("r", "3px")
+					.attr("stroke", "black")
+					.attr("stroke-width", "1px")
+					.attr("fill", "none");
+
+					movingCircle4
+					.attr("cx", xx)
+					.attr("cy", yy)
+					.attr("r", "3px")
+					.attr("stroke", "black")
+					.attr("stroke-width", "1px")
+					.attr("fill", "black");
+
+					movingCircle5
+					.attr("cx", xxx)
+					.attr("cy", yyy)
+					.attr("r", "3px")
+					.attr("stroke", "blue")
+					.attr("stroke-width", "1px")
+					.attr("fill", "blue");
+				  }
+
+				  var t=0;
+
+				  var timerId = setInterval(function() {
+					if (t<=1) {
+					  drawCircle(t);
+					  t+=0.02;
+					} else {
+					  t=0;
+					}
+				  }, 100);
+				</script>
+			</body>
+		</head>
+	</article>
+	</section>
+	
+	
+	<aside>
+	<h2>Sources</h2>
+	<ul class="tag-cloud">
+	<li><a href="http://bl.ocks.org/BikeshC/0ccac71e4275e9891737" rel="tag" target="_blank">BikeBlog</a>
+	<li><a href="" rel="tag" target="_blank">FuTech</a>
+	<li><a href="http://w3schools.com" rel="tag" target="_blank">W3S</a>
+	<li><a href="http://edx.org" rel="tag" target="_blank">EdX</a>
+	</aside>
+	
+	<footer>
+	<p>&copy; 2015 Saturn Inc.</p>
+	</footer>
+</body>
+</html>
